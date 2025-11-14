@@ -206,6 +206,11 @@ if [ -n "${CUSTOM_SRC_PATH}" ]; then
 
 	WINE_VERSION="$(cat wine/VERSION | tail -c +14)"
 	BUILD_NAME="${WINE_VERSION}"-custom
+elif [ "$WINE_BRANCH" = "wine-10.18-winmd" ]; then
+	git clone https://github.com/noahc3/wine wine -b "$WINE_BRANCH"
+
+	WINE_VERSION="$(cat wine/VERSION | tail -c +14)"
+	BUILD_NAME="${WINE_BRANCH}-AffinityN"
 elif [ "$WINE_BRANCH" = "staging-tkg" ] || [ "$WINE_BRANCH" = "staging-tkg-fsync" ]; then
 	if [ "$WINE_BRANCH" = "staging-tkg" ]; then
 		git clone https://github.com/Kron4ek/wine-tkg wine

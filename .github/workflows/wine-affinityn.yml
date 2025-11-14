@@ -1,8 +1,6 @@
-name: Wine Stable CI
+name: Wine AffinityN CI
 
 on:
-  schedule:
-    - cron:  '0 0 1 * *'
   workflow_dispatch:
 
 jobs:
@@ -24,10 +22,11 @@ jobs:
           sudo apt install debootstrap perl git wget xz-utils bubblewrap autoconf
           sudo tar -C /opt -xpf /opt/Bootstraps/bootstraps.tar.xz
           chmod +x build_wine.sh
-          export WINE_VERSION="$(wget -q -O - "https://gitlab.winehq.org/wine/wine/-/raw/stable/VERSION" | tail -c +14)"
-          WINE_BRANCH=vanilla ./build_wine.sh
+          export WINE_VERSION="$(wget -q -O - "https://raw.githubusercontent.com/noahc3/wine/refs/heads/wine-10.18-winmd/VERSION" | tail -c +14)"
+          export EXPERIMENTAL_WOW64="true"
+          WINE_BRANCH=wine-10.18-winmd ./build_wine.sh
           sha256sum *.tar.xz
       - uses: actions/upload-artifact@v4
         with:
-          name: Wine Stable
+          name: Wine AffinityN
           path: ./*.tar.xz

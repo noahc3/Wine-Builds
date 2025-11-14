@@ -13,6 +13,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install debootstrap perl git wget xz-utils bubblewrap autoconf unzip -y
+          sudo mkdir -p /opt/Bootstraps
           wget https://nightly.link/Kron4ek/Wine-Builds/actions/runs/18988784067/Bootstraps.zip -O /opt/Bootstraps/bootstraps.zip
           sudo unzip /opt/Bootstraps/bootstraps.zip -d /opt/Bootstraps
           sudo tar -C /opt -xpf /opt/Bootstraps/bootstraps.tar.xz

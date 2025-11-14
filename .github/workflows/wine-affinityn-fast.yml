@@ -1,4 +1,4 @@
-name: Wine AffinityN CI
+name: Wine AffinityN Fast CI
 
 on:
   workflow_dispatch:
